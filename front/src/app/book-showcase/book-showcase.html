@@ -1,0 +1,19 @@
+<section class="showcase-panel" aria-labelledby="showcase-title">
+  <h2 class="showcase-title" id="showcase-title">Trending</h2>
+  <img class="reader" src="/showcase-reader-ink.png" alt="" loading="lazy">
+
+  <div class="shelves" role="group" aria-label="Bookshelf" tabindex="0">
+    <div class="track">
+      @for (repeat of repeats; track repeat) {
+        <ul class="cover-set" [attr.aria-hidden]="repeat === 0 ? null : 'true'">
+          @for (book of books; track book.slug) {
+            <li>
+              <img [src]="'/showcase-covers/' + book.slug + '.webp'"
+                   [alt]="repeat === 0 ? book.title : ''" decoding="async">
+            </li>
+          }
+        </ul>
+      }
+    </div>
+  </div>
+</section>

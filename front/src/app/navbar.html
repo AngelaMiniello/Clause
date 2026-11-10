@@ -1,0 +1,73 @@
+<a class="skip-link" href="#main-content">Skip to content</a>
+
+<header class="site-header">
+  <nav class="navbar" aria-label="Main navigation" (focusout)="onBlur($event)">
+    <a routerLink="/" class="brand" aria-label="Clause home" (click)="close()">
+      <img src="/clause-logo.png" alt="Clause" width="294" height="98" fetchpriority="high">
+    </a>
+
+  <form role="search" class="search" (submit)="search($event, searchInput.value)">
+    <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">
+        <circle cx="10.5" cy="10.5" r="6.5"/>
+        <path d="m16 16 4 4"/>
+    </svg>
+    <label class="sr-only" for="book-search">Search books, authors or ISBN</label>
+    <input #searchInput id="book-search" name="q" type="search" placeholder="Search books, authors…" required>
+    <button type="submit" aria-label="Search">↵</button>
+  </form>
+
+  <div class="nav-actions">
+    <a class="library-link" routerLink="/library" (click)="close()">My Library</a>
+    <div class="dropdown">
+      <button #exploreButton class="nav-trigger" [attr.aria-expanded]="open() === 'explore'" aria-controls="explore-panel" (click)="toggle('explore')">Explore 
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+        <path d="m6 9 6 6 6-6"/>
+      </svg>
+      </button>
+
+      @if(open() === 'explore') { 
+      <div id="explore-panel" class="dropdown-panel explore-panel">
+        <span class="menu-label">A WORLD OF BOOKS</span>
+        
+          @for(item of explore; track item[2]) {
+            <a [routerLink]="item[2]" (click)="close()">{{item[0]}}<small>{{item[1]}}</small></a>
+          }
+      </div> 
+      }
+    </div>
+
+    <span class="nav-divider" aria-hidden="true"></span>
+
+    <div class="dropdown">
+      <button #userButton class="avatar-trigger" aria-label="Open account menu" [attr.aria-expanded]="open() === 'user'" aria-controls="user-panel" (click)="toggle('user')">
+        @if(avatarUrl()) {
+          <img [src]="avatarUrl()" alt="Your profile" width="40" height="40">} 
+          @else {
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <circle cx="12" cy="7" r="3.5"/>
+              <path d="M4.5 21v-3a5 5 0 0 1 5-5h5a5 5 0 0 1 5 5v3"/>
+            </svg>
+          }
+      </button>
+
+      @if(open() === 'user') {
+        <div id="user-panel" class="dropdown-panel user-panel">
+          <span class="menu-label">YOUR READING SPACE</span>
+        
+          @for(item of personal; track item[1]) {
+            <a [routerLink]="item[1]" (click)="close()">{{item[0]}}</a>
+          }
+        
+          <div class="menu-footer">
+            <a routerLink="/login" (click)="close()">Log in / Sign up 
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </div>
+      }
+
+    </div>
+
+  </div>
+  </nav>
+</header>

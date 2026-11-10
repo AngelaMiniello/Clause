@@ -1,0 +1,28 @@
+<section class="book-section" aria-labelledby="book-preview-title">
+  <svg class="section-wave" viewBox="0 0 1440 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+    <path fill="#c7cd9a" d="M0 0H1440V49C1380 110 1300 42 1240 66C1160 103 1090 86 1040 41C950 105 835 47 780 65C685 97 565 87 480 27C405 100 300 82 250 65C160 38 130 103 0 57Z" />
+  </svg>
+  <div class="book-inner">
+    <div class="demo" role="group" aria-label="Interactive reading record example. Changes are not saved.">
+      <div class="book">
+        <img class="cover" src="/the-elegance-of-the-hedgehog.jpg" alt="Cover of The Elegance of the Hedgehog by Muriel Barbery" width="148" height="230" loading="lazy">
+        <div class="book-heading"><span class="demo-label">A LITTLE PREVIEW</span><h3>The Elegance<br>of the Hedgehog</h3><p class="author">Muriel Barbery</p><span class="status-badge" aria-live="polite">{{ status() }} <span aria-hidden="true">⌄</span></span></div>
+      </div>
+      <div class="reading-panel">
+        <p class="panel-label">Your reading journey</p>
+        <div class="statuses" role="group" aria-label="Example reading status">
+          @for (item of statuses; track item.label) { <button class="status" type="button" [attr.aria-pressed]="status() === item.label" (click)="status.set(item.label)"><span class="status-icon" aria-hidden="true">{{item.icon}}</span>{{item.label}}</button> }
+        </div>
+        <div class="row rating"><span>Your rating</span><div class="stars" role="group" aria-label="Example book rating">@for(star of stars; track star) { <button type="button" [class.active]="star <= rating()" [attr.aria-label]="'Rate ' + star + ' out of 5 stars'" [attr.aria-pressed]="rating() === star" (click)="rating.set(star)">★</button> }</div></div>
+        <div class="row"><span>✎ &nbsp; Your review & notes</span><span class="tag">Your words</span></div>
+        <div class="row"><span>◷ &nbsp; Dates & rereads</span><span class="tag">Your pace</span></div>
+        <div class="row"><span>☷ &nbsp; Add to lists</span><span class="tag">Favorites</span></div>
+        <div class="privacy"><span>Privacy</span><span>Everyone</span><span>Friends</span><span class="privacy-choice">Only you</span></div>
+      </div>
+      <p class="demo-caption">Your books, your way. Try the stars and reading status.<br>Demo only · changes aren’t saved.</p>
+    </div>
+    <div class="copy"><span class="kicker">EVERY BOOK HAS A PLACE</span><h2 id="book-preview-title">Keep track of your books.<br>Make room for your thoughts.</h2><p class="intro">From your next read to your all-time favorite, keep your reading life together in one place.</p><ul>@for(benefit of benefits; track benefit) { <li><span class="check" aria-hidden="true">✓</span>{{benefit}}</li> }</ul><p class="closing">Share what you want. Keep the rest just for you.</p></div>
+  </div>
+</section>
+
+

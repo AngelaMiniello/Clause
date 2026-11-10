@@ -1,0 +1,6 @@
+/back/dist/
+front/.env.local
+back/dist/
+/back/.agents/
+/back/.claude/
+/back/.windsurf/

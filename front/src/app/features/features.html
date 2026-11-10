@@ -1,0 +1,20 @@
+<section class="features" aria-labelledby="features-title">
+  <svg class="section-wave" viewBox="0 0 1440 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+    <path fill="#a4d3f1" d="M0 0H1440V49C1380 110 1300 42 1240 66C1160 103 1090 86 1040 41C950 105 835 47 780 65C685 97 565 87 480 27C405 100 300 82 250 65C160 38 130 103 0 57Z" />
+  </svg>
+  <div class="features-inner">
+    <h2 id="features-title">What can you find in Clause?</h2>
+    <div class="feature-board">
+      @for (feature of features; track feature.title) {
+        <article class="feature-card">
+          <div class="card-heading">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path [attr.d]="feature.icon" /></svg>
+            <h3>{{ feature.title }}</h3>
+          </div>
+          @if (feature.detail) { <span class="detail">{{ feature.detail }}</span> }
+          <p>{{ feature.description }}</p>
+        </article>
+      }
+    </div>
+  </div>
+</section>
